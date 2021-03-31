@@ -38,7 +38,7 @@ func TestConfigProvider(t *testing.T) {
 		viper.SupportedRemoteProviders = supportedRemoteProviders
 	}()
 
-	viper.RemoteConfig = NewConfigProvider()
+	viper.RemoteConfig = NewConfigProvider(&Options{})
 	viper.SupportedRemoteProviders = append(viper.SupportedRemoteProviders, "vault")
 
 	_, err = client.Logical().Write("secret/data/hello", map[string]interface{}{
